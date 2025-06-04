@@ -1,0 +1,18 @@
+{
+  "timestamp": "TimeError",
+  "BME1": {
+    "temperature": 28.4,
+    "humidity": 86.51855,
+    "pressure": 970.5924
+  },
+  "BME2": {
+    "temperature": 28.56,
+    "humidity": 80.23926,
+    "pressure": 1010.178
+  },
+  "BME3": {
+    "temperature": 28.83,
+    "humidity": 83.18945,
+    "pressure": 990.0592
+  }
+}
