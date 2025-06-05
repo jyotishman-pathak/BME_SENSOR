@@ -1,0 +1,6 @@
+{
+  "timestamp": "2025-06-02 22:25:00",
+  "BME1": { "temperature": 30.8, "humidity": 94.1, "pressure": 961.0 },
+  "BME2": { "temperature": 32.0, "humidity": 90.0, "pressure": 1023.3 },
+  "BME3": { "temperature": 34.5, "humidity": 87.0, "pressure": 976.0 }
+}

@@ -59,28 +59,34 @@ app.get('/', (req, res) => {
 app.get('/all-data', (req, res) => {
   try {
     const files = fs.readdirSync(parentDir)
-      .filter(file => file.startsWith('data_') && file.endsWith('.json'))
-      .sort()
-      .reverse(); 
+      .filter(file => file.startsWith('data_') && file.endsWith('.json'));
 
     if (files.length === 0) {
-      return res.status(404).send(' No data files found.');
+      return res.status(404).send('No data files found.');
     }
 
-   
+    // Parse all JSON data from files
     const allData = files.map(file => {
       const filePath = path.join(parentDir, file);
       const fileData = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(fileData);
-    });
+      try {
+        return JSON.parse(fileData);
+      } catch {
+        return null; 
+      }
+    }).filter(Boolean); 
 
-    res.json(allData);
+ 
+    const sortedData = allData
+      .filter(entry => !isNaN(new Date(entry.timestamp)))
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+    res.json(sortedData);
   } catch (error) {
     console.error('Error reading data files:', error);
-    res.status(500).send(' Error reading data files.');
+    res.status(500).send('Error reading data files.');
   }
 });
-
 
 
 
